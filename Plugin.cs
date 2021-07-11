@@ -35,8 +35,12 @@ namespace PinkCute
             Instance = this;
             Log = logger;
             Log.Info("PinkCute initialized.");
+            if (PluginConfig.Instance.Cuties == null)
+                PluginConfig.Instance.Cuties = new List<string>() { "Pink", "Goobie", "Eris" };
         }
-
+		/// <summary>
+        /// Picks a cutie
+        /// </summary>
         public string RandomCutie()
         {
             UnityEngine.Random.InitState(DateTime.UtcNow.Second);
