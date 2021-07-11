@@ -7,6 +7,7 @@ using HarmonyLib;
 using IPA;
 using IPA.Config;
 using IPA.Config.Stores;
+using PinkCute.Configuration;
 using UnityEngine.SceneManagement;
 using UnityEngine;
 using IPALogger = IPA.Logging.Logger;
@@ -33,9 +34,21 @@ namespace PinkCute
         {
             Instance = this;
             Log = logger;
-            Log.Info("$projectname$ initialized.");
+            Log.Info("PinkCute initialized.");
         }
 
+        public string RandomCutie()
+        {
+            UnityEngine.Random.InitState(DateTime.UtcNow.Second);
+            if (PluginConfig.Instance.RandomCutie)
+                return PluginConfig.Instance.Cuties[
+                    UnityEngine.Random.Range(0, PluginConfig.Instance.Cuties.Count)];
+            else
+                return PluginConfig.Instance.Cutie;
+        }
+        
+        
+        
         [OnEnable]
         public void OnEnable()
         {
@@ -49,15 +62,12 @@ namespace PinkCute
         }
 
         #region BSIPA Config
-        //Uncomment to use BSIPA's config
-        /*
         [Init]
         public void InitWithConfig(Config conf)
         {
             Configuration.PluginConfig.Instance = conf.Generated<Configuration.PluginConfig>();
             Log.Debug("Config loaded");
         }
-        */
         #endregion
     }
 }
