@@ -20,7 +20,7 @@ namespace PinkCute.HarmonyPatches
         {
             if (__instance == null || ParseInputText == null) throw new NullReferenceException("NOOO!");
 
-            __instance.text = "Pink Cute";
+            __instance.text = $"{Plugin.Instance.RandomCutie()} Cute";
             ParseInputText.Invoke(__instance, new object[] {});
         }
     }

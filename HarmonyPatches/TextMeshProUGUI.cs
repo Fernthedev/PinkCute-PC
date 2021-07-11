@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Reflection;
 using IPA.Utilities;
+using PinkCute.Configuration;
 using TMPro;
 
 namespace PinkCute.HarmonyPatches
@@ -19,7 +20,7 @@ namespace PinkCute.HarmonyPatches
 
         private static void Prefix(TextMeshProUGUI __instance, string ___m_text)
         {
-            __instance.text = "Pink Cute";
+            __instance.text = $"{Plugin.Instance.RandomCutie()} Cute";
             ParseInputText.Invoke(__instance, new object[] {});
         }
     }
