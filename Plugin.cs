@@ -10,6 +10,7 @@ using IPA.Config.Stores;
 using PinkCute.Configuration;
 using UnityEngine.SceneManagement;
 using UnityEngine;
+using UnityEngine.UIElements;
 using IPALogger = IPA.Logging.Logger;
 
 namespace PinkCute
@@ -22,6 +23,7 @@ namespace PinkCute
 
         internal static Plugin Instance { get; private set; }
         internal static IPALogger Log { get; private set; }
+        public static List<string> Cuties = new List<string>() { "Pink", "Goobie", "Eris" };
         internal static readonly Harmony _harmonyInstance = new Harmony(HARMONYID);
 
         [Init]
@@ -35,8 +37,6 @@ namespace PinkCute
             Instance = this;
             Log = logger;
             Log.Info("PinkCute initialized.");
-            if (PluginConfig.Instance.Cuties == null)
-                PluginConfig.Instance.Cuties = new List<string>() { "Pink", "Goobie", "Eris" };
         }
 		/// <summary>
         /// Picks a cutie
@@ -45,8 +45,8 @@ namespace PinkCute
         {
             UnityEngine.Random.InitState(DateTime.UtcNow.Second);
             if (PluginConfig.Instance.RandomCutie)
-                return PluginConfig.Instance.Cuties[
-                    UnityEngine.Random.Range(0, PluginConfig.Instance.Cuties.Count)];
+                return Cuties[
+                    UnityEngine.Random.Range(0, Cuties.Count)];
             else
                 return PluginConfig.Instance.Cutie;
         }

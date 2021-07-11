@@ -11,7 +11,5 @@ namespace PinkCute.Configuration
         public static PluginConfig Instance { get; set; }
         public virtual bool RandomCutie { get; set; }
         public virtual string Cutie { get; set; } = "Pink";
-        public virtual List<string> Cuties { get; set; } = new List<string>(){ "Pink", "Goobie", "Eris" };
-
     }
 }
