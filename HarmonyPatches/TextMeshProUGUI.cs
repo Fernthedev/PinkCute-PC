@@ -18,9 +18,9 @@ namespace PinkCute.HarmonyPatches
         // public delegate void ParseInputText(TextMeshProUGUI instance);
         // private static readonly ParseInputText ParseInputTextAccessor = MethodAccessor<TextMeshProUGUI, ParseInputText>.GetDelegate("ParseInputText");
 
-        private static void Prefix(TextMeshProUGUI __instance, string ___m_text)
+        private static void Prefix(TextMeshProUGUI __instance)
         {
-            __instance.text = $"{Plugin.Instance.RandomCutie()} Cute";
+            __instance.text = $"{PluginConfig.Instance.GetRandomCutie()} Cute";
             ParseInputText.Invoke(__instance, new object[] {});
         }
     }

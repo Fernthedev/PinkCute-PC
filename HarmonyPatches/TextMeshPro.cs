@@ -2,6 +2,7 @@
 using System.Reflection;
 using IPA.Utilities;
 using JetBrains.Annotations;
+using PinkCute.Configuration;
 using TMPro;
 
 namespace PinkCute.HarmonyPatches
@@ -20,7 +21,7 @@ namespace PinkCute.HarmonyPatches
         {
             if (__instance == null || ParseInputText == null) throw new NullReferenceException("NOOO!");
 
-            __instance.text = $"{Plugin.Instance.RandomCutie()} Cute";
+            __instance.text = $"{PluginConfig.Instance.GetRandomCutie()} Cute";
             ParseInputText.Invoke(__instance, new object[] {});
         }
     }

@@ -23,7 +23,6 @@ namespace PinkCute
 
         internal static Plugin Instance { get; private set; }
         internal static IPALogger Log { get; private set; }
-        public static List<string> Cuties = new List<string>() { "Pink", "Goobie", "Eris" };
         internal static readonly Harmony _harmonyInstance = new Harmony(HARMONYID);
 
         [Init]
@@ -38,18 +37,7 @@ namespace PinkCute
             Log = logger;
             Log.Info("PinkCute initialized.");
         }
-		/// <summary>
-        /// Picks a cutie
-        /// </summary>
-        public string RandomCutie()
-        {
-            UnityEngine.Random.InitState(DateTime.UtcNow.Second);
-            if (PluginConfig.Instance.RandomCutie)
-                return Cuties[
-                    UnityEngine.Random.Range(0, Cuties.Count)];
-            else
-                return PluginConfig.Instance.Cutie;
-        }
+
         
         
         
@@ -69,7 +57,7 @@ namespace PinkCute
         [Init]
         public void InitWithConfig(Config conf)
         {
-            Configuration.PluginConfig.Instance = conf.Generated<Configuration.PluginConfig>();
+            PluginConfig.Instance = conf.Generated<PluginConfig>();
             Log.Debug("Config loaded");
         }
         #endregion
