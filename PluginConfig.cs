@@ -13,7 +13,7 @@ namespace PinkCute.Configuration
         public virtual bool RandomCutie { get; set; } = false;
         public virtual string Cutie { get; set; } = "Pink";
 
-        public static readonly List<string> Cuties = new List<string> { "Pink", "Goobie", "Eris" };
+        public static readonly List<string> Cuties = new List<string> { "Pink", "Goobie", "Eris", "Era" };
 
         /// <summary>
         /// Picks a cutie
